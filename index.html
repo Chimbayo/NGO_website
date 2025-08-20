@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Action for Development - CAD Malawi</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="ho.js"></script>
 </head>
 <body>
     <header>
@@ -17,9 +15,23 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#focus">Focus Areas</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#news">News</a></li>
                 <li><a href="#values">Values</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="#focus" onclick="closeMobileMenu()">Focus Areas</a></li>
+                    <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                    <li><a href="#news" onclick="closeMobileMenu()">News</a></li>
+                    <li><a href="#values" onclick="closeMobileMenu()">Values</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -72,7 +84,7 @@
             <h2 class="section-title">Our Focus Areas</h2>
             <div class="focus-areas">
                 <div class="focus-card">
-                    <div class="focus-icon">🔋</div>
+                    <div class="focus-icon">⚡</div>
                     <h3>Renewable Energy & Climate Action</h3>
                     <p>Promoting clean and affordable energy alternatives while raising awareness on climate-smart technologies and practices.</p>
                     <div class="sdg-tags">
@@ -97,6 +109,112 @@
                         <span class="sdg-tag">SDG 2: Zero Hunger</span>
                         <span class="sdg-tag">SDG 8: Decent Work</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="gallery-grid">
+                <div class="project-card">
+                    <div class="project-image">🔋</div>
+                    <div class="project-content">
+                        <span class="project-badge">Clean Energy</span>
+                        <h3>Solar Power Initiative</h3>
+                        <div class="project-location">📍 Lilongwe District</div>
+                        <p>Installing solar panels in rural schools and health centers, providing reliable electricity to over 1,200 beneficiaries and improving access to essential services.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🌱</div>
+                    <div class="project-content">
+                        <span class="project-badge">Reforestation</span>
+                        <h3>Community Forest Restoration</h3>
+                        <div class="project-location">📍 Mchinji & Kasungu</div>
+                        <p>Working with local communities to plant 10,000 indigenous trees, restore degraded lands, and establish sustainable forest management practices.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🥬</div>
+                    <div class="project-content">
+                        <span class="project-badge">Agriculture</span>
+                        <h3>Climate-Smart Farming</h3>
+                        <div class="project-location">📍 Dedza District</div>
+                        <p>Training 300+ smallholder farmers in drought-resistant crops, organic farming techniques, and water conservation methods to improve food security.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">💧</div>
+                    <div class="project-content">
+                        <span class="project-badge">Water & Sanitation</span>
+                        <h3>Clean Water Access Program</h3>
+                        <div class="project-location">📍 Mzimba District</div>
+                        <p>Constructing boreholes and implementing rainwater harvesting systems to provide clean water access to remote communities.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🏠</div>
+                    <div class="project-content">
+                        <span class="project-badge">Energy Efficiency</span>
+                        <h3>Improved Cookstoves Project</h3>
+                        <div class="project-location">📍 Multi-District</div>
+                        <p>Distributing fuel-efficient cookstoves to reduce firewood consumption by 50% and improve indoor air quality for 500+ households.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">📚</div>
+                    <div class="project-content">
+                        <span class="project-badge">Capacity Building</span>
+                        <h3>Green Skills Training</h3>
+                        <div class="project-location">📍 All Operating Districts</div>
+                        <p>Providing technical training in renewable energy installation, sustainable agriculture, and environmental conservation to build local capacity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="news">
+        <div class="container">
+            <h2 class="section-title">Latest News & Updates</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">August 10, 2025</div>
+                    <h3>New Partnership with Ministry of Energy</h3>
+                    <p class="news-excerpt">CAD Malawi has signed a memorandum of understanding with the Ministry of Energy to expand solar energy access in rural communities across Central Malawi...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">August 5, 2025</div>
+                    <h3>1000+ Trees Planted in Community Initiative</h3>
+                    <p class="news-excerpt">Our reforestation program reached a major milestone this month with local communities in Kasungu planting over 1,000 indigenous trees to combat deforestation...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">July 28, 2025</div>
+                    <h3>Climate-Smart Agriculture Training Success</h3>
+                    <p class="news-excerpt">Over 150 farmers completed our intensive training program on drought-resistant crops and sustainable farming practices, showing 40% improved yields...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">July 22, 2025</div>
+                    <h3>International Recognition for Environmental Work</h3>
+                    <p class="news-excerpt">CAD Malawi received recognition from the UN Environment Programme for our innovative approach to community-based environmental conservation...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">July 15, 2025</div>
+                    <h3>New Solar Installation Benefits 300 Students</h3>
+                    <p class="news-excerpt">The completion of solar panel installation at Dedza Primary School now provides reliable electricity for evening study sessions and computer classes...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">July 8, 2025</div>
+                    <h3>Community Water Project Launches</h3>
+                    <p class="news-excerpt">Breaking ground on our largest water access project yet, bringing clean water infrastructure to five remote villages in Mzimba District...</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </div>
             </div>
         </div>
@@ -157,12 +275,50 @@
                             info@cadmalawi.org
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +265 999 750 595 / +265 888 604 068
+                        </div>
+                    </div>
                 </div>
-                <div class="mission-box">
-                    <h3 style="color: #2c5530; margin-bottom: 1rem;">Our Mission</h3>
-                    <p style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); line-height: 1.8;">
-                        To enable communities in Malawi to access sustainable renewable energy solutions while promoting interventions that conserve natural resources, mitigate climate change, and strengthen sustainable agriculture for present and future generations.
-                    </p>
+                <div class="contact-form">
+                    <h3 style="color: #2c5530; margin-bottom: 1.5rem;">Send us a Message</h3>
+                    <div class="form-success" id="formSuccess">
+                        Thank you for your message! We'll get back to you within 24 hours.
+                    </div>
+                    <form id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="volunteering">Volunteering</option>
+                                <option value="donations">Donations & Support</option>
+                                <option value="projects">Project Information</option>
+                                <option value="media">Media Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Please tell us how we can help you..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -177,8 +333,12 @@
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <p>About Us<br>Focus Areas<br>Core Values<br>Contact</p>
-                </div>
+                    <p>
+                    <a href="#about" class="cta-button">About Us</a><br>
+                    <a href="#focus" class="cta-button">Focus Areas</a><br>
+                    <a href="#values" class="cta-button">Core Values</a><br>
+                    <a href="#contact" class="cta-button">Contact</a>
+                    </p>                </div>
                 <div class="footer-section">
                     <h4>SDG Alignment</h4>
                     <p>SDG 2, 7, 8, 12, 13, 15<br>Zero Hunger • Clean Energy<br>Climate Action • Life on Land</p>
@@ -190,6 +350,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
