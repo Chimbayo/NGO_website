@@ -330,6 +330,18 @@ border-top: 5px solid #32CD32;
 transform: translateY(-10px);
 box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
+.focus-card3 {
+    background: url("agri.jpg") no-repeat center center;
+    background-size: cover; /* makes image cover the whole card */
+    color: white; /* so text is readable */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: relative;
+}
+.focus-card3::before {
+    content: "";
+    position: absolute;
 
 
 
@@ -743,6 +755,7 @@ to {
     grid-template-columns: 1fr;
 }
 }
+
 
 
 
