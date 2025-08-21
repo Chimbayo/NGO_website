@@ -113,6 +113,31 @@ align-items: center;
 color: white;
 text-align: center;
 }
+.hero {
+    background: url("home.jpeg") no-repeat center center;
+    background-size: cover;   /* make sure it covers entire section */
+    min-height: 100vh;        /* full screen height */
+    display: flex;            /* centers content */
+    align-items: center;
+    color: white;             /* text readable */
+    position: relative;
+}
+
+/* optional dark overlay for better text contrast */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* semi-transparent black */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative; /* keep content above overlay */
+    z-index: 2;
+    text-align: center; /* centers text horizontally */
+}
+
 
 .hero-content h2 {
 font-size: 3rem;
@@ -697,6 +722,7 @@ to {
     grid-template-columns: 1fr;
 }
 }
+
 
 
 
