@@ -250,6 +250,18 @@ box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     position: relative;
 }
+.focus-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* dark overlay */
+    border-radius: 12px;
+}
+.focus-card * {
+    position: relative;
+    z-index: 1; /* keeps text above overlay */
+}
+
 
 .focus-icon {
 width: 60px;
@@ -642,5 +654,6 @@ to {
     grid-template-columns: 1fr;
 }
 }
+
 
 
