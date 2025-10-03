@@ -35,7 +35,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'hanifamakunganya252@gmail.com',
+      content: 'chimbayokondwani@gmail.com',
       gradient: 'from-green-500 to-emerald-500',
     },
     {
