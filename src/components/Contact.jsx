@@ -71,7 +71,7 @@ const Contact = () => {
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
-      to_email: 'hanifamakunganya252@gmail.com',
+      to_email: 'chimbayokondwan@gmail.com',
     }
     
     try {

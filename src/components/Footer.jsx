@@ -91,9 +91,9 @@ const Footer = () => {
             </div>
             
             <div className="space-y-2 pt-4 border-t border-white/10">
-              <a href="mailto:hanifamakunganya252@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors text-sm">
+              <a href="mailto:chimbayokondwan@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors text-sm">
                 <Mail className="h-4 w-4" />
-                hanifamakunganya252@gmail.com
+                chimbayokondwan@gmail.com
               </a>
               <a href="tel:+265999750595" className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors text-sm">
                 <Phone className="h-4 w-4" />
