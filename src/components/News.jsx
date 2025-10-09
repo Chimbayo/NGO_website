@@ -35,61 +35,72 @@ const News = () => {
   ]
 
   return (
-    <section id="news" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+    <section id="news" className="py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block mb-4">
+            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
+              Latest Updates
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
             Latest News & Updates
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
+          <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Stay informed about our latest achievements and community impact
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map((item, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50"
+              className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20"
             >
-              <CardHeader>
-                <div className={`inline-flex items-center justify-center w-14 h-14 ${item.bgColor} rounded-full mb-4 group-hover:scale-110 transition-transform`}>
-                  <item.icon className={`h-7 w-7 ${item.color}`} />
+              <CardHeader className="text-center">
+                <div className={`inline-flex items-center justify-center w-20 h-20 ${item.bgColor} rounded-full mb-5 mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 shadow-lg`}>
+                  <item.icon className={`h-10 w-10 ${item.color}`} />
                 </div>
-                <Badge className="w-fit mb-2" variant="outline">
+                <Badge className="w-fit mb-3 shadow-sm mx-auto" variant="outline">
                   {item.category}
                 </Badge>
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <Calendar className="h-4 w-4" />
-                  <span>{item.date}</span>
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 justify-center">
+                  <Calendar className="h-4 w-4 text-accent" />
+                  <span className="font-medium">{item.date}</span>
                 </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors line-clamp-2">
+                <CardTitle className="text-lg sm:text-xl md:text-2xl group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
                   {item.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="space-y-4">
-                <CardDescription className="text-gray-700 leading-relaxed line-clamp-3">
+              <CardContent className="space-y-5">
+                <CardDescription className="text-gray-700 text-center leading-relaxed line-clamp-3 text-sm sm:text-base">
                   {item.excerpt}
                 </CardDescription>
-                <Button
-                  variant="ghost"
-                  className="group/btn p-0 h-auto font-semibold text-primary hover:text-accent"
-                >
-                  Read More
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                <div className="flex justify-center">
+                  <Button
+                    variant="ghost"
+                    className="group/btn p-0 h-auto font-bold text-primary hover:text-primary/80 transition-colors"
+                  >
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* View All News Button */}
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="group">
+        <div className="text-center mt-16">
+          <Button size="lg" variant="outline" className="group border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
             View All News
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
           </Button>
         </div>
       </div>

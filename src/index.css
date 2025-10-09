@@ -32,21 +32,99 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
   }
 }
 
 @layer utilities {
   .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out;
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   .animate-fade-in {
-    animation: fade-in 0.4s ease-out;
+    animation: fade-in 0.5s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
 }

@@ -9,11 +9,11 @@ const Navbar = ({ isScrolled }) => {
 
   const navLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
+    { href: '#values', label: 'Values' },
     { href: '#focus', label: 'Focus Areas' },
     { href: '#projects', label: 'Projects' },
     { href: '#news', label: 'News' },
-    { href: '#values', label: 'Values' },
+    { href: '#about', label: 'About' },
     { href: '#contact', label: 'Contact' },
   ]
 
@@ -61,23 +61,23 @@ const Navbar = ({ isScrolled }) => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200'
-          : 'bg-gradient-to-r from-[#1e4620] via-[#2c5530] to-[#3d6b42] shadow-xl'
+          ? 'bg-white/98 backdrop-blur-lg shadow-xl border-b-2 border-gray-100'
+          : 'bg-gradient-to-r from-[#1e4620] via-[#2c5530] to-[#3d6b42] shadow-2xl'
       )}
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3" onClick={(e) => handleNavClick(e, '#home')}>
+          <a href="#home" className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, '#home')}>
             <img
               src="/cad-logo.jpg"
               alt="CAD Malawi Logo"
-              className="h-12 w-12 rounded-full object-cover ring-2 ring-white/50"
+              className="h-14 w-14 rounded-full object-cover ring-2 ring-white/50 shadow-lg group-hover:ring-4 group-hover:ring-accent/50 transition-all duration-300"
             />
             <span className={cn(
-              'text-xl font-bold transition-colors',
+              'text-xl font-extrabold transition-colors duration-300',
               isScrolled ? 'text-primary' : 'text-white'
             )}>
               CAD Malawi
@@ -94,7 +94,7 @@ const Navbar = ({ isScrolled }) => {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
-                      'font-medium transition-all relative pb-1',
+                      'font-semibold transition-all duration-300 relative pb-1 text-base',
                       isActive
                         ? isScrolled
                           ? 'text-primary font-bold'
@@ -107,8 +107,8 @@ const Navbar = ({ isScrolled }) => {
                     {link.label}
                     {isActive && (
                       <span className={cn(
-                        'absolute bottom-0 left-0 right-0 h-0.5 rounded-full',
-                        isScrolled ? 'bg-primary' : 'bg-accent'
+                        'absolute bottom-0 left-0 right-0 h-1 rounded-full shadow-lg',
+                        isScrolled ? 'bg-primary shadow-primary/50' : 'bg-accent shadow-accent/50'
                       )} />
                     )}
                   </a>
@@ -121,21 +121,21 @@ const Navbar = ({ isScrolled }) => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden hover:bg-white/10"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X className={cn('h-6 w-6', isScrolled ? 'text-gray-700' : 'text-white')} />
+              <X className={cn('h-7 w-7 transition-transform duration-300', isScrolled ? 'text-gray-700' : 'text-white')} />
             ) : (
-              <Menu className={cn('h-6 w-6', isScrolled ? 'text-gray-700' : 'text-white')} />
+              <Menu className={cn('h-7 w-7 transition-transform duration-300', isScrolled ? 'text-gray-700' : 'text-white')} />
             )}
           </Button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-fade-in">
-            <ul className="flex flex-col gap-2">
+          <div className="md:hidden mt-6 pb-6 animate-fade-in">
+            <ul className="flex flex-col gap-3">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href.substring(1)
                 return (
@@ -144,11 +144,11 @@ const Navbar = ({ isScrolled }) => {
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
                       className={cn(
-                        'block px-4 py-2 rounded-md font-medium transition-colors',
+                        'block px-5 py-3 rounded-lg font-semibold transition-all duration-300',
                         isActive
                           ? isScrolled
-                            ? 'bg-primary/10 text-primary font-bold border-l-4 border-primary'
-                            : 'bg-white/20 text-accent font-bold border-l-4 border-accent'
+                            ? 'bg-primary/10 text-primary font-bold border-l-4 border-primary shadow-md'
+                            : 'bg-white/20 text-accent font-bold border-l-4 border-accent shadow-md'
                           : isScrolled
                           ? 'text-gray-700 hover:bg-gray-100'
                           : 'text-white hover:bg-white/10'

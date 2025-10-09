@@ -36,41 +36,45 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-[#0f2412] via-[#1e4620] to-[#1a3a1f] text-white border-t-4 border-accent/30">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-gradient-to-br from-[#0f2412] via-[#1e4620] to-[#1a3a1f] text-white border-t-4 border-accent/50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 py-16 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-3 gap-12 mb-8">
+        <div className="grid md:grid-cols-3 gap-16 mb-12">
           {/* About Section */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="space-y-5">
+            <div className="flex items-center gap-4 mb-6">
               <img
                 src="/cad-logo.jpg"
                 alt="CAD Malawi Logo"
-                className="h-12 w-12 rounded-full object-cover ring-2 ring-white/30"
+                className="h-16 w-16 rounded-full object-cover ring-4 ring-white/30 shadow-lg"
               />
-              <h3 className="text-xl font-bold">CAD Malawi</h3>
+              <h3 className="text-2xl font-extrabold">CAD Malawi</h3>
             </div>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-200 leading-relaxed text-base">
               Building resilient communities through sustainable solutions in renewable energy, agriculture, and environmental conservation.
             </p>
-            <div className="flex items-center gap-2 text-accent">
-              <Heart className="h-5 w-5" />
-              <span className="text-sm font-medium">Empowering Communities Since 2022</span>
+            <div className="flex items-center gap-3 text-accent bg-white/5 p-3 rounded-lg backdrop-blur-sm">
+              <Heart className="h-6 w-6 flex-shrink-0" />
+              <span className="text-sm font-bold">Empowering Communities Since 2022</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-accent">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-xl font-extrabold mb-6 text-accent">Quick Links</h4>
+            <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-gray-300 hover:text-accent transition-colors inline-flex items-center group"
+                    className="text-gray-200 hover:text-accent transition-all duration-300 inline-flex items-center group font-medium text-base"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-accent transition-all mr-0 group-hover:mr-2" />
+                    <span className="w-0 group-hover:w-3 h-0.5 bg-accent transition-all duration-300 mr-0 group-hover:mr-3 rounded-full" />
                     {link.label}
                   </a>
                 </li>
@@ -80,40 +84,40 @@ const Footer = () => {
 
           {/* SDG Alignment & Contact */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-accent">SDG Alignment</h4>
-            <div className="space-y-2 mb-6">
+            <h4 className="text-xl font-extrabold mb-6 text-accent">SDG Alignment</h4>
+            <div className="space-y-3 mb-8">
               {sdgs.map((sdg, index) => (
-                <div key={index} className="text-sm text-gray-300 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                <div key={index} className="text-sm text-gray-200 flex items-center gap-3 font-medium">
+                  <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
                   {sdg}
                 </div>
               ))}
             </div>
             
-            <div className="space-y-2 pt-4 border-t border-white/10">
-              <a href="mailto:chimbayokondwan@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors text-sm">
-                <Mail className="h-4 w-4" />
-                chimbayokondwan@gmail.com
+            <div className="space-y-3 pt-6 border-t-2 border-white/20">
+              <a href="mailto:chimbayokondwan@gmail.com" className="flex items-center gap-3 text-gray-200 hover:text-accent transition-all duration-300 text-sm group">
+                <Mail className="h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">chimbayokondwan@gmail.com</span>
               </a>
-              <a href="tel:+265999750595" className="flex items-center gap-2 text-gray-300 hover:text-accent transition-colors text-sm">
-                <Phone className="h-4 w-4" />
-                +265 999 750 595
+              <a href="tel:+265999750595" className="flex items-center gap-3 text-gray-200 hover:text-accent transition-all duration-300 text-sm group">
+                <Phone className="h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium">+265 999 750 595</span>
               </a>
-              <div className="flex items-center gap-2 text-gray-300 text-sm">
-                <MapPin className="h-4 w-4" />
-                Lilongwe, Malawi
+              <div className="flex items-center gap-3 text-gray-200 text-sm">
+                <MapPin className="h-5 w-5 flex-shrink-0" />
+                <span className="font-medium">Lilongwe, Malawi</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+        <div className="border-t-2 border-white/20 pt-10 mt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-300 text-sm text-center md:text-left font-medium">
               &copy; {currentYear} Community Action for Development (CAD). All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm text-center md:text-right">
+            <p className="text-gray-300 text-sm text-center md:text-right font-medium">
               Registered NGO in Malawi • Making Impact Since 2022
             </p>
           </div>

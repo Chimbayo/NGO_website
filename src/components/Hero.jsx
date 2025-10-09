@@ -4,10 +4,10 @@ import { Button } from './ui/button'
 const Hero = () => {
   const handleLearnMore = (e) => {
     e.preventDefault()
-    const aboutSection = document.querySelector('#about')
-    if (aboutSection) {
+    const valuesSection = document.querySelector('#values')
+    if (valuesSection) {
       const offset = 80
-      const elementPosition = aboutSection.getBoundingClientRect().top
+      const elementPosition = valuesSection.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - offset
       window.scrollTo({
         top: offsetPosition,
@@ -19,29 +19,44 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: 'url(/home.jpeg)' }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      {/* Enhanced Overlay with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/75" />
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <div className="max-w-4xl mx-auto space-y-6 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Building Resilient Communities
+        <div className="max-w-5xl mx-auto space-y-6 animate-fade-in-up">
+          <div className="inline-block mb-4">
+            <span className="px-6 py-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full text-accent font-semibold text-sm tracking-wide uppercase">
+              Empowering Communities Since 2022
+            </span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.15] text-balance">
+            Building Resilient
+            <span className="block bg-gradient-to-r from-accent via-green-400 to-accent bg-clip-text text-transparent mt-3">
+              Communities
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+          
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light">
             Empowering Malawian communities through sustainable energy, agriculture, and environmental conservation
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          
+          <div className="flex flex-col sm:flex-row gap-5 justify-center pt-6">
             <Button
               size="lg"
               onClick={handleLearnMore}
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-accent/50 transition-all hover:scale-105 border-2 border-white/20"
+              className="group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 text-white font-bold text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-500 hover:scale-105 border-2 border-white/30"
             >
               Learn More
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               size="lg"
@@ -50,18 +65,19 @@ const Hero = () => {
                 e.preventDefault()
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-white/10 backdrop-blur-md border-2 border-white/50 text-white hover:bg-white hover:text-primary font-semibold text-lg px-8 py-6 rounded-full shadow-xl transition-all hover:scale-105"
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/60 text-white hover:bg-white hover:text-primary font-bold text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
             >
               Get Involved
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white/50 rounded-full" />
+      {/* Enhanced Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-7 h-11 border-2 border-white/60 rounded-full flex items-start justify-center p-2 backdrop-blur-sm bg-white/5">
+          <div className="w-1.5 h-3 bg-white/70 rounded-full animate-pulse" />
         </div>
       </div>
     </section>

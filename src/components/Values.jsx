@@ -7,30 +7,30 @@ const Values = () => {
       icon: Shield,
       title: 'Integrity',
       description: 'Transparency and accountability in all our operations and community engagements.',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-primary to-accent',
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
       description: 'Applying practical, creative, and adaptive solutions to complex community challenges.',
-      gradient: 'from-yellow-500 to-orange-500',
+      gradient: 'from-accent to-primary',
     },
     {
       icon: Users,
       title: 'Community Commitment',
       description: 'Ensuring inclusive participation and ownership at the grassroots level.',
-      gradient: 'from-green-500 to-emerald-500',
+      gradient: 'from-primary via-accent to-primary',
     },
     {
       icon: Scale,
       title: 'Equity & Inclusion',
       description: 'Promoting fairness and equal opportunity, especially for vulnerable groups.',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-secondary to-primary',
     },
   ]
 
   return (
-    <section id="values" className="py-20 bg-gradient-to-br from-[#1e4620] via-primary to-[#3d6b42] text-white relative overflow-hidden">
+    <section id="values" className="py-16 md:py-20 bg-gradient-to-br from-[#1e4620] via-primary to-[#3d6b42] text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -39,16 +39,21 @@ const Values = () => {
         }} />
       </div>
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block mb-4">
+            <span className="px-5 py-2 bg-primary/20 border border-primary/30 text-primary rounded-full text-sm font-bold tracking-wide uppercase backdrop-blur-sm">
+              Our Foundation
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-balance">
             Our Core Values
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
-          <p className="text-gray-200 mt-4 max-w-2xl mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full shadow-lg shadow-primary/50" />
+          <p className="text-gray-100 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             The principles that guide our work and define our commitment to communities
           </p>
         </div>
@@ -57,18 +62,18 @@ const Values = () => {
           {values.map((value, index) => (
             <Card
               key={index}
-              className="group bg-white/10 backdrop-blur-md border-2 border-white/20 hover:bg-white/20 hover:border-accent/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-accent/20"
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/30 hover:bg-white/20 hover:border-accent transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/30"
             >
               <CardHeader className="text-center">
-                <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${value.gradient} rounded-full mb-4 mx-auto shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                  <value.icon className="h-10 w-10 text-white" />
+                <div className={`inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br ${value.gradient} rounded-full mb-6 mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700`}>
+                  <value.icon className="h-12 w-12 text-white" />
                 </div>
-                <CardTitle className="text-2xl text-white group-hover:text-accent transition-colors">
+                <CardTitle className="text-xl sm:text-2xl md:text-3xl text-white group-hover:text-accent transition-colors duration-300 leading-tight">
                   {value.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-200 text-center leading-relaxed">
+                <CardDescription className="text-gray-100 text-center leading-relaxed text-sm sm:text-base">
                   {value.description}
                 </CardDescription>
               </CardContent>

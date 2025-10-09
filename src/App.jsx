@@ -25,11 +25,11 @@ function App() {
       <Navbar isScrolled={isScrolled} />
       <main>
         <Hero />
-        <About />
+        <Values />
         <FocusAreas />
         <Projects />
         <News />
-        <Values />
+        <About />
         <Contact />
       </main>
       <Footer />

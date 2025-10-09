@@ -24,25 +24,25 @@ const Contact = () => {
       icon: MapPin,
       title: 'Headquarters',
       content: 'Lilongwe, Malawi',
-      gradient: 'from-red-500 to-pink-500',
+      gradient: 'from-primary to-accent',
     },
     {
       icon: Globe,
       title: 'Operating Areas',
       content: 'Lilongwe, Mchinji, Kasungu, Dedza, Mzimba',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-accent to-primary',
     },
     {
       icon: Mail,
       title: 'Email',
       content: 'chimbayokondwani@gmail.com',
-      gradient: 'from-green-500 to-emerald-500',
+      gradient: 'from-primary via-accent to-primary',
     },
     {
       icon: Phone,
       title: 'Phone',
       content: '+265 999 750 595 / +265 888 604 068',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-secondary to-primary',
     },
   ]
 
@@ -119,36 +119,45 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+    <section id="contact" className="py-16 md:py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50/50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block mb-4">
+            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
+              Contact Us
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
+          <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Have questions or want to get involved? We'd love to hear from you
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-primary mb-6">Contact Information</h3>
-              <div className="space-y-4">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-primary mb-8">Contact Information</h3>
+              <div className="space-y-5">
                 {contactInfo.map((info, index) => (
                   <Card
                     key={index}
-                    className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/50"
+                    className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20"
                   >
-                    <CardContent className="flex items-start gap-4 p-6">
-                      <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${info.gradient} rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
-                        <info.icon className="h-6 w-6 text-white" />
+                    <CardContent className="flex items-start gap-5 p-7">
+                      <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${info.gradient} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-700`}>
+                        <info.icon className="h-8 w-8 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">{info.title}</h4>
-                        <p className="text-gray-600 text-sm">{info.content}</p>
+                        <h4 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">{info.title}</h4>
+                        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{info.content}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -157,35 +166,36 @@ const Contact = () => {
             </div>
 
             {/* Additional Info Card */}
-            <Card className="bg-gradient-to-br from-primary to-secondary text-white border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl">Join Our Mission</CardTitle>
-                <CardDescription className="text-gray-200">
+            <Card className="bg-gradient-to-br from-primary via-primary to-secondary text-white border-0 shadow-2xl overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-accent/20 rounded-full blur-3xl" />
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-2xl sm:text-3xl font-extrabold">Join Our Mission</CardTitle>
+                <CardDescription className="text-gray-100 text-sm sm:text-base">
                   Partner with us to create lasting change in Malawian communities
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-accent" />
-                  <span>Partnership Opportunities</span>
+              <CardContent className="space-y-4 relative z-10">
+                <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+                  <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-accent flex-shrink-0" />
+                  <span className="font-semibold text-sm sm:text-base">Partnership Opportunities</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-accent" />
-                  <span>Volunteer Programs</span>
+                <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+                  <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-accent flex-shrink-0" />
+                  <span className="font-semibold text-sm sm:text-base">Volunteer Programs</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-accent" />
-                  <span>Donation Support</span>
+                <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+                  <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-accent flex-shrink-0" />
+                  <span className="font-semibold text-sm sm:text-base">Donation Support</span>
                 </div>
               </CardContent>
             </Card>
           </div>
 
           {/* Contact Form */}
-          <Card className="shadow-xl border-2">
+          <Card className="shadow-2xl border-2 border-gray-200 bg-gradient-to-br from-white to-gray-50/30">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">Send us a Message</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-extrabold text-primary">Send us a Message</CardTitle>
+              <CardDescription className="text-sm sm:text-base text-gray-600">
                 Fill out the form below and we'll get back to you within 24 hours
               </CardDescription>
             </CardHeader>
@@ -283,7 +293,7 @@ const Contact = () => {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-bold text-base sm:text-lg py-5 sm:py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
                 >
                   {isSubmitting ? (
                     <>

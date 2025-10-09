@@ -31,49 +31,61 @@ const FocusAreas = () => {
   ]
 
   return (
-    <section id="focus" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+    <section id="focus" className="py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block mb-4">
+            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
+              What We Do
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
             Our Focus Areas
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
+          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
+          <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
+            Transforming communities through three interconnected pillars of sustainable development
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {focusAreas.map((area, index) => (
             <Card
               key={index}
-              className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50"
+              className="group relative overflow-hidden bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20"
             >
               {/* Background Image with Overlay */}
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{ backgroundImage: `url(${area.image})` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 group-hover:from-black/60 group-hover:via-black/50 group-hover:to-black/70 transition-all duration-700" />
               </div>
 
               {/* Content */}
               <div className="relative z-10">
-                <CardHeader>
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full mb-4 shadow-lg">
-                    <area.icon className="h-8 w-8 text-white" />
+                <CardHeader className="text-center">
+                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-primary via-accent to-primary rounded-full mb-6 mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+                    <area.icon className="h-12 w-12 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-white group-hover:text-accent transition-colors">
+                  <CardTitle className="text-xl sm:text-2xl md:text-3xl text-white group-hover:text-accent transition-colors duration-300 leading-tight">
                     {area.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-gray-200 text-base leading-relaxed">
+                <CardContent className="space-y-5">
+                  <CardDescription className="text-gray-100 text-center leading-relaxed text-sm sm:text-base">
                     {area.description}
                   </CardDescription>
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-2 pt-3">
                     {area.sdgs.map((sdg, idx) => (
                       <Badge
                         key={idx}
                         variant="secondary"
-                        className="bg-white/90 text-primary hover:bg-white font-medium"
+                        className="bg-white/95 text-primary hover:bg-accent hover:text-white font-semibold transition-all duration-300 shadow-md"
                       >
                         {sdg}
                       </Badge>
