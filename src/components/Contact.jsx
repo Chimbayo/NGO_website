@@ -57,8 +57,20 @@ const Contact = () => {
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     
+    // Log configuration status (without exposing sensitive data)
+    console.log('EmailJS Configuration Check:')
+    console.log('Service ID present:', !!serviceId)
+    console.log('Template ID present:', !!templateId)
+    console.log('Public Key present:', !!publicKey)
+    
     // Check if EmailJS is configured
     if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration missing!')
+      console.error('Missing:', {
+        serviceId: !serviceId,
+        templateId: !templateId,
+        publicKey: !publicKey
+      })
       setErrorMessage('Email service is not configured. Please contact the administrator.')
       setShowError(true)
       setIsSubmitting(false)
@@ -76,7 +88,8 @@ const Contact = () => {
     
     try {
       // Send email using EmailJS
-      await emailjs.send(
+      console.log('Attempting to send email via EmailJS...')
+      const response = await emailjs.send(
         serviceId,
         templateId,
         templateParams,
@@ -84,6 +97,10 @@ const Contact = () => {
       )
       
       // Success
+      console.log('✓ Email sent successfully!')
+      console.log('Response:', response)
+      console.log('Timestamp:', new Date().toISOString())
+      
       setIsSubmitting(false)
       setShowSuccess(true)
       setFormData({
@@ -99,9 +116,28 @@ const Contact = () => {
         setShowSuccess(false)
       }, 5000)
     } catch (error) {
-      console.error('Email send error:', error)
+      // Detailed error logging for production debugging
+      console.error('=== EMAIL SEND ERROR ===')
+      console.error('Error Type:', error.name)
+      console.error('Error Message:', error.message)
+      console.error('Error Status:', error.status)
+      console.error('Error Text:', error.text)
+      console.error('Full Error Object:', error)
+      console.error('Timestamp:', new Date().toISOString())
+      console.error('========================')
+      
       setIsSubmitting(false)
-      setErrorMessage('Failed to send message. Please try again or contact us directly via email.')
+      
+      // Provide detailed error message to user
+      let userMessage = 'Failed to send message. '
+      if (error.text) {
+        userMessage += `Error: ${error.text}. `
+      } else if (error.message) {
+        userMessage += `Error: ${error.message}. `
+      }
+      userMessage += 'Please try again or contact us directly via email.'
+      
+      setErrorMessage(userMessage)
       setShowError(true)
       
       // Hide error message after 7 seconds
