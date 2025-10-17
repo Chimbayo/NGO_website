@@ -11,6 +11,7 @@ const Projects = () => {
       location: 'Lilongwe District',
       description: 'Installing solar panels in rural schools and health centers, providing reliable electricity to over 1,200 beneficiaries and improving access to essential services.',
       gradient: 'from-yellow-400 to-orange-500',
+      image: '/energy.jpg',
       stats: { beneficiaries: '1,200+', installations: '15' },
     },
     {
@@ -20,6 +21,7 @@ const Projects = () => {
       location: 'Mchinji & Kasungu',
       description: 'Working with local communities to plant indigenous trees, restore degraded lands, and establish sustainable forest management practices.',
       gradient: 'from-green-400 to-emerald-600',
+      image: '/trees.jpg',
       stats: { trees: '50,000+', hectares: '200' },
     },
     {
@@ -29,6 +31,7 @@ const Projects = () => {
       location: 'Dedza District',
       description: 'Training smallholder farmers in drought-resistant crops, organic farming techniques, and water conservation methods to improve food security.',
       gradient: 'from-lime-400 to-green-600',
+      image: '/agri.jpg',
       stats: { farmers: '500+', villages: '12' },
     },
   ]
@@ -55,11 +58,17 @@ const Projects = () => {
               key={index}
               className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden"
             >
-              {/* Icon Header with Gradient */}
-              <div className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-all duration-500" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
-                <project.icon className="h-28 w-28 text-white relative z-10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 drop-shadow-2xl" />
+              {/* Project Image Header */}
+              <div className="h-56 relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg group-hover:scale-110 transition-transform duration-500">
+                  <project.icon className="h-6 w-6 text-primary" />
+                </div>
               </div>
 
               <CardHeader className="text-center">
