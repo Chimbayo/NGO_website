@@ -13,6 +13,7 @@ const News = () => {
       icon: Award,
       color: 'text-yellow-600',
       bgColor: 'bg-yellow-50',
+      image: '/people-planting-tree-countryside.jpg',
     },
     {
       date: 'August 28, 2025',
@@ -22,6 +23,7 @@ const News = () => {
       icon: Users,
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
+      image: '/local-farmer.jpg',
     },
     {
       date: 'August 10, 2025',
@@ -31,6 +33,7 @@ const News = () => {
       icon: Lightbulb,
       color: 'text-green-600',
       bgColor: 'bg-green-50',
+      image: '/solar-installation.jpg',
     },
   ]
 
@@ -54,16 +57,28 @@ const News = () => {
           {newsItems.map((item, index) => (
             <Card
               key={index}
-              className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20"
+              className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden"
             >
-              <CardHeader className="text-center">
-                <div className={`inline-flex items-center justify-center w-20 h-20 ${item.bgColor} rounded-full mb-5 mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 shadow-lg`}>
-                  <item.icon className={`h-10 w-10 ${item.color}`} />
+              {/* News Image Header */}
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <Badge className="shadow-lg" variant="secondary">
+                    {item.category}
+                  </Badge>
                 </div>
-                <Badge className="w-fit mb-3 shadow-sm mx-auto" variant="outline">
-                  {item.category}
-                </Badge>
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 justify-center">
+                <div className="absolute bottom-4 right-4 p-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg group-hover:scale-110 transition-transform duration-500">
+                  <item.icon className={`h-5 w-5 ${item.color}`} />
+                </div>
+              </div>
+
+              <CardHeader className="text-center">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-3 justify-center">
                   <Calendar className="h-4 w-4 text-accent" />
                   <span className="font-medium">{item.date}</span>
                 </div>
