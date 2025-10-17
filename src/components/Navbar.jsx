@@ -63,7 +63,7 @@ const Navbar = ({ isScrolled }) => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
-          ? 'bg-white/98 backdrop-blur-lg shadow-xl border-b-2 border-gray-100'
+          ? 'bg-white backdrop-blur-lg shadow-2xl border-b-4 border-primary/20'
           : 'bg-gradient-to-r from-[#1e4620] via-[#2c5530] to-[#3d6b42] shadow-2xl'
       )}
     >
