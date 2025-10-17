@@ -80,7 +80,7 @@ const Navbar = ({ isScrolled }) => {
               'text-xl font-extrabold transition-colors duration-300',
               isScrolled ? 'text-primary' : 'text-white'
             )}>
-              CAD Malawi
+              Community Action for Development
             </span>
           </a>
 
