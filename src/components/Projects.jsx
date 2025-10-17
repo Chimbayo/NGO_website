@@ -41,15 +41,9 @@ const Projects = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
-              Our Impact
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
             Our Projects
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Transforming communities through impactful initiatives across Malawi
           </p>
@@ -72,7 +66,7 @@ const Projects = () => {
                 <Badge className="w-fit mb-3 shadow-md mx-auto" variant="secondary">
                   {project.badge}
                 </Badge>
-                <CardTitle className="text-xl sm:text-2xl md:text-3xl group-hover:text-primary transition-colors duration-300 leading-tight">
+                <CardTitle className="text-lg sm:text-xl md:text-2xl group-hover:text-primary transition-colors duration-300 leading-tight">
                   {project.title}
                 </CardTitle>
                 <div className="flex items-center gap-2 text-gray-600 mt-2 justify-center">

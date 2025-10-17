@@ -42,15 +42,9 @@ const News = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
-              Latest Updates
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
             Latest News & Updates
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Stay informed about our latest achievements and community impact
           </p>
@@ -73,7 +67,7 @@ const News = () => {
                   <Calendar className="h-4 w-4 text-accent" />
                   <span className="font-medium">{item.date}</span>
                 </div>
-                <CardTitle className="text-lg sm:text-xl md:text-2xl group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
+                <CardTitle className="text-base sm:text-lg md:text-xl group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-tight">
                   {item.title}
                 </CardTitle>
               </CardHeader>

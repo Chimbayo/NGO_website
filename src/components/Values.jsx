@@ -44,15 +44,9 @@ const Values = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="px-5 py-2 bg-primary/20 border border-primary/30 text-primary rounded-full text-sm font-bold tracking-wide uppercase backdrop-blur-sm">
-              Our Foundation
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-balance">
             Our Core Values
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full shadow-lg shadow-primary/50" />
           <p className="text-gray-100 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             The principles that guide our work and define our commitment to communities
           </p>
@@ -68,7 +62,7 @@ const Values = () => {
                 <div className={`inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br ${value.gradient} rounded-full mb-6 mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700`}>
                   <value.icon className="h-12 w-12 text-white" />
                 </div>
-                <CardTitle className="text-xl sm:text-2xl md:text-3xl text-white group-hover:text-accent transition-colors duration-300 leading-tight">
+                <CardTitle className="text-lg sm:text-xl md:text-2xl text-white group-hover:text-accent transition-colors duration-300 leading-tight">
                   {value.title}
                 </CardTitle>
               </CardHeader>

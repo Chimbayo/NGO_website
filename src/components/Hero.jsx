@@ -32,20 +32,14 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-5xl mx-auto space-y-6 animate-fade-in-up">
-          <div className="inline-block mb-4">
-            <span className="px-6 py-2 bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full text-accent font-semibold text-sm tracking-wide uppercase">
-              Empowering Communities Since 2022
-            </span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.15] text-balance">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.15] text-balance">
             Building Resilient
             <span className="block bg-gradient-to-r from-accent via-green-400 to-accent bg-clip-text text-transparent mt-3">
               Communities
             </span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light">
             Empowering Malawian communities through sustainable energy, agriculture, and environmental conservation
           </p>
           

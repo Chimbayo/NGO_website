@@ -162,15 +162,9 @@ const Contact = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
-              Contact Us
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
             Get In Touch
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
             Have questions or want to get involved? We'd love to hear from you
           </p>
@@ -180,7 +174,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-primary mb-8">Contact Information</h3>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-primary mb-8">Contact Information</h3>
               <div className="space-y-5">
                 {contactInfo.map((info, index) => (
                   <Card
@@ -205,7 +199,7 @@ const Contact = () => {
             <Card className="bg-gradient-to-br from-primary via-primary to-secondary text-white border-0 shadow-2xl overflow-hidden relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent/20 rounded-full blur-3xl" />
               <CardHeader className="relative z-10">
-                <CardTitle className="text-2xl sm:text-3xl font-extrabold">Join Our Mission</CardTitle>
+                <CardTitle className="text-xl sm:text-2xl font-extrabold">Join Our Mission</CardTitle>
                 <CardDescription className="text-gray-100 text-sm sm:text-base">
                   Partner with us to create lasting change in Malawian communities
                 </CardDescription>
@@ -230,7 +224,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="shadow-2xl border-2 border-gray-200 bg-gradient-to-br from-white to-gray-50/30">
             <CardHeader>
-              <CardTitle className="text-2xl sm:text-3xl font-extrabold text-primary">Send us a Message</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl font-extrabold text-primary">Send us a Message</CardTitle>
               <CardDescription className="text-sm sm:text-base text-gray-600">
                 Fill out the form below and we'll get back to you within 24 hours
               </CardDescription>

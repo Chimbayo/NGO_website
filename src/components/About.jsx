@@ -17,15 +17,9 @@ const About = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold tracking-wide uppercase">
-              Who We Are
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
             About CAD Malawi
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -44,7 +38,7 @@ const About = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
                   <Target className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">Our Vision</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary">Our Vision</h3>
               </div>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">
                 To build a Malawi where every community thrives in dignity, resilience, and sustainability through innovative solutions that reduce poverty, protect the environment, and secure livelihoods for future generations.
