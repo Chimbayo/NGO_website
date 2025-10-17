@@ -1,13 +1,132 @@
-import { Users, Calendar, Target, Globe } from 'lucide-react'
-import { Card, CardContent } from './ui/card'
+import { useState, useEffect } from 'react'
+import { Users, Calendar, Target, Globe, Sprout, Battery, TrendingUp, Database, Megaphone, X, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 
 const About = () => {
+  const [showStaff, setShowStaff] = useState(false)
+  const [showDistricts, setShowDistricts] = useState(false)
+  const [showSDGs, setShowSDGs] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+
   const stats = [
-    { icon: Globe, number: '5', label: 'Districts Operating' },
-    { icon: Users, number: '7', label: 'Staff & Volunteers' },
+    { icon: Globe, number: '5', label: 'Districts Operating', clickable: true },
+    { icon: Users, number: '8', label: 'Staff & Volunteers', clickable: true },
     { icon: Calendar, number: '2022', label: 'Year Established' },
-    { icon: Target, number: '6', label: 'SDGs Aligned' },
+    { icon: Target, number: '6', label: 'SDGs Aligned', clickable: true },
   ]
+
+  const staffPositions = [
+    {
+      title: 'Executive Director',
+      name: 'Dr. Kondwani Chimbayo',
+      department: 'Leadership',
+      icon: Users,
+      image: '/CEO.jpg',
+      description: 'Provides strategic leadership and oversees all organizational operations and programs.',
+      gradient: 'from-blue-500 to-indigo-600',
+    },
+    {
+      title: 'Deputy Director',
+      department: 'Leadership',
+      icon: Users,
+      image: '/CEO.jpg',
+      description: 'Supports the Executive Director and oversees daily operations and program coordination.',
+      gradient: 'from-indigo-500 to-purple-600',
+    },
+    {
+      title: 'HR Manager',
+      department: 'Management',
+      icon: Users,
+      image: '/CEO.jpg',
+      description: 'Manages staff recruitment, development, and ensures organizational capacity building.',
+      gradient: 'from-purple-500 to-pink-600',
+    },
+    {
+      title: 'Program Director',
+      department: 'Management',
+      icon: TrendingUp,
+      image: '/CEO.jpg',
+      description: 'Oversees implementation of all projects and ensures program quality and impact.',
+      gradient: 'from-pink-500 to-rose-600',
+    },
+    {
+      title: 'Environmental Scientist',
+      department: 'Technical',
+      icon: Sprout,
+      image: '/CEO.jpg',
+      description: 'Manages reforestation initiatives and develops sustainable forest management practices.',
+      gradient: 'from-green-500 to-emerald-600',
+    },
+    {
+      title: 'Agriculture Extension Officer',
+      name: 'Mr. Dalitso Chriford',
+      department: 'Technical',
+      icon: Sprout,
+      image: '/Agr-ex-Officer.jpg',
+      description: 'Provides technical support to farmers and implements climate-smart agriculture programs.',
+      gradient: 'from-lime-500 to-green-600',
+    },
+    {
+      title: 'Training & Capacity Building Officer',
+      department: 'Programs',
+      icon: Megaphone,
+      image: '/CEO.jpg',
+      description: 'Conducts workshops and training sessions to build community capacity and skills.',
+      gradient: 'from-cyan-500 to-blue-600',
+    },
+    {
+      title: 'IT/Data Officer',
+      name: 'Mr. Peter Chimbayo',
+      department: 'Support',
+      icon: Database,
+      image: '/IT-team-leader.jpg',
+      description: 'Manages information systems, databases, and provides technical support for operations.',
+      gradient: 'from-slate-500 to-gray-700',
+    },
+  ]
+
+  // Auto-play slideshow
+  useEffect(() => {
+    if (!showStaff || !isPlaying) return
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % staffPositions.length)
+    }, 4000) // Change slide every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [showStaff, isPlaying, staffPositions.length])
+
+  // Reset slide when modal opens and prevent body scroll
+  useEffect(() => {
+    if (showStaff) {
+      setCurrentSlide(0)
+      setIsPlaying(true)
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden'
+    } else {
+      // Restore body scroll
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [showStaff])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % staffPositions.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + staffPositions.length) % staffPositions.length)
+  }
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index)
+  }
 
   return (
     <section id="about" className="py-16 md:py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50/50 relative overflow-hidden">
@@ -51,7 +170,16 @@ const About = () => {
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className="group text-center bg-white/95 backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-accent transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-accent/30 overflow-hidden relative"
+                onClick={() => {
+                  if (stat.clickable) {
+                    if (stat.label === 'Staff & Volunteers') setShowStaff(true)
+                    else if (stat.label === 'Districts Operating') setShowDistricts(true)
+                    else if (stat.label === 'SDGs Aligned') setShowSDGs(true)
+                  }
+                }}
+                className={`group text-center bg-white/95 backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-accent transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-accent/30 overflow-hidden relative ${
+                  stat.clickable ? 'cursor-pointer' : ''
+                }`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-700" />
                 <CardContent className="pt-8 pb-8 relative z-10">
@@ -64,11 +192,247 @@ const About = () => {
                   <div className="text-xs sm:text-sm text-gray-600 font-semibold uppercase tracking-wide">
                     {stat.label}
                   </div>
+                  {stat.clickable && (
+                    <div className="text-xs text-accent font-semibold mt-2">Click to view</div>
+                  )}
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
+
+        {/* Staff Modal/Overlay */}
+        {showStaff && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9999] animate-fade-in" onClick={() => setShowStaff(false)}>
+            <div className="w-full h-screen flex flex-col bg-gray-50 pt-20" onClick={(e) => e.stopPropagation()}>
+              {/* Header - Always Visible */}
+              <div className="bg-gradient-to-r from-primary to-accent px-3 py-4 flex items-center justify-between shadow-2xl flex-shrink-0 w-full">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-white truncate">Our Team</h3>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowStaff(false)
+                  }}
+                  className="text-white hover:bg-white/30 bg-white/10 rounded-full h-14 w-14 transition-all duration-300 hover:rotate-90 hover:scale-110 flex-shrink-0 ml-2 sm:ml-4 border-2 border-white/30"
+                  aria-label="Close staff modal"
+                >
+                  <X className="h-8 w-8 stroke-[3]" />
+                </Button>
+              </div>
+
+              {/* Staff Slideshow */}
+              <div className="flex-1 relative flex items-center justify-center py-4 px-2 overflow-y-auto">
+                {/* Main Slide */}
+                <div className="relative w-full flex items-center justify-center">
+                  <div className="flex transition-transform duration-700 ease-in-out w-full" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                    {staffPositions.map((position, index) => (
+                      <div key={index} className="w-full flex-shrink-0 px-2 flex items-center justify-center">
+                        <div className="max-w-3xl w-full">
+                          <Card className="bg-white border-2 border-gray-200 shadow-2xl flex flex-col md:flex-row">
+                            {/* Staff Image Header */}
+                            <div className="md:w-1/2 h-48 sm:h-56 md:h-auto relative overflow-hidden bg-gray-100">
+                              <img 
+                                src={position.image} 
+                                alt={position.title}
+                                className="w-full h-full object-cover object-center"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                              <div className="absolute top-4 left-4">
+                                <Badge className="shadow-lg bg-white/95 text-primary border-0 font-semibold text-sm" variant="secondary">
+                                  {position.department}
+                                </Badge>
+                              </div>
+                              <div className={`absolute bottom-4 right-4 p-3 bg-gradient-to-br ${position.gradient} rounded-xl shadow-xl`}>
+                                <position.icon className="h-6 w-6 text-white" />
+                              </div>
+                            </div>
+
+                            {/* Content Section */}
+                            <div className="md:w-1/2 flex flex-col justify-center p-4 sm:p-6">
+                              <div className="text-center md:text-left">
+                                {position.name && (
+                                  <div className="text-primary font-extrabold text-lg sm:text-xl md:text-2xl mb-2 leading-tight">
+                                    {position.name}
+                                  </div>
+                                )}
+                                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-3 leading-snug">
+                                  {position.title}
+                                </h3>
+                                <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">
+                                  {position.description}
+                                </p>
+                              </div>
+                            </div>
+                          </Card>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation Buttons */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={prevSlide}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={nextSlide}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+
+                {/* Side Indicators */}
+                <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                  {staffPositions.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                        index === currentSlide 
+                          ? 'bg-primary scale-150' 
+                          : 'bg-gray-400 hover:bg-gray-600'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Play/Pause Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-10 w-10 sm:h-12 sm:w-12 z-20"
+                >
+                  {isPlaying ? <Pause className="h-4 w-4 sm:h-5 sm:w-5 text-primary" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Districts Operating Modal */}
+        {showDistricts && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9999] animate-fade-in" onClick={() => setShowDistricts(false)}>
+            <div className="w-full h-screen flex flex-col bg-gray-50 pt-20" onClick={(e) => e.stopPropagation()}>
+              <div className="bg-gradient-to-r from-primary to-accent px-3 py-4 flex items-center justify-between shadow-2xl flex-shrink-0 w-full">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Globe className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-white truncate">Districts Operating</h3>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowDistricts(false)
+                  }}
+                  className="text-white hover:bg-white/30 bg-white/10 rounded-full h-14 w-14 transition-all duration-300 hover:rotate-90 hover:scale-110 flex-shrink-0 ml-2 sm:ml-4 border-2 border-white/30"
+                  aria-label="Close districts modal"
+                >
+                  <X className="h-8 w-8 stroke-[3]" />
+                </Button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4 sm:p-8">
+                <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {['Lilongwe', 'Mchinji', 'Kasungu', 'Dedza', 'Dowa'].map((district, index) => (
+                    <Card key={index} className="bg-white border-2 border-gray-200 hover:border-primary transition-all duration-300 hover:shadow-xl">
+                      <CardHeader className="text-center pb-3">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                          <Globe className="h-8 w-8 text-white" />
+                        </div>
+                        <CardTitle className="text-xl font-bold text-gray-800">{district}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-600 text-center text-sm">
+                          Active projects in renewable energy, reforestation, and climate-smart agriculture.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* SDGs Aligned Modal */}
+        {showSDGs && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9999] animate-fade-in" onClick={() => setShowSDGs(false)}>
+            <div className="w-full h-screen flex flex-col bg-gray-50 pt-20" onClick={(e) => e.stopPropagation()}>
+              <div className="bg-gradient-to-r from-primary to-accent px-3 py-4 flex items-center justify-between shadow-2xl flex-shrink-0 w-full">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Target className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-white truncate">SDGs Aligned</h3>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowSDGs(false)
+                  }}
+                  className="text-white hover:bg-white/30 bg-white/10 rounded-full h-14 w-14 transition-all duration-300 hover:rotate-90 hover:scale-110 flex-shrink-0 ml-2 sm:ml-4 border-2 border-white/30"
+                  aria-label="Close SDGs modal"
+                >
+                  <X className="h-8 w-8 stroke-[3]" />
+                </Button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4 sm:p-8">
+                <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { number: 1, title: 'No Poverty', description: 'Supporting livelihoods through sustainable agriculture and clean energy access.' },
+                    { number: 2, title: 'Zero Hunger', description: 'Training farmers in climate-smart agriculture to improve food security.' },
+                    { number: 7, title: 'Affordable & Clean Energy', description: 'Installing solar panels in rural communities for reliable electricity.' },
+                    { number: 13, title: 'Climate Action', description: 'Implementing reforestation and environmental conservation programs.' },
+                    { number: 15, title: 'Life on Land', description: 'Restoring degraded lands and promoting sustainable forest management.' },
+                    { number: 17, title: 'Partnerships for the Goals', description: 'Collaborating with local communities and organizations for impact.' },
+                  ].map((sdg, index) => (
+                    <Card key={index} className="bg-white border-2 border-gray-200 hover:border-primary transition-all duration-300 hover:shadow-xl">
+                      <CardHeader className="text-center pb-3">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-2xl font-extrabold text-white">{sdg.number}</span>
+                        </div>
+                        <CardTitle className="text-lg font-bold text-gray-800">{sdg.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-600 text-center text-sm leading-relaxed">
+                          {sdg.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
