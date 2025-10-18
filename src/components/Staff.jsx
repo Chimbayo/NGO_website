@@ -25,7 +25,7 @@ const Staff = () => {
       department: 'Technical',
       icon: Battery,
       image: '/CEO.jpg',
-      description: 'Leads solar installation projects and provides technical expertise on clean energy solutions.',
+      description: 'Leads renewable energy projects and provides technical expertise on clean energy solutions.',
       gradient: 'from-yellow-500 to-orange-600',
     },
     {
@@ -37,6 +37,14 @@ const Staff = () => {
       gradient: 'from-green-500 to-emerald-600',
     },
     {
+      title: 'Agriculture Extension Officer',
+      department: 'Technical',
+      icon: Sprout,
+      image: '/Agr-ex-Officer.jpg',
+      description: 'Provides technical support to farmers and implements climate-smart agriculture programs.',
+      gradient: 'from-lime-500 to-green-600',
+    },
+    {
       title: 'Community Mobilization Officer',
       department: 'Field Operations',
       icon: Megaphone,
@@ -45,7 +53,7 @@ const Staff = () => {
       gradient: 'from-cyan-500 to-blue-600',
     },
     {
-      title: 'IT/Database Officer',
+      title: 'IT/Data Officer',
       department: 'Support',
       icon: Database,
       image: '/IT-team-leader.jpg',

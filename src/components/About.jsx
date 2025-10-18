@@ -9,12 +9,16 @@ const About = () => {
   const [showDistricts, setShowDistricts] = useState(false)
   const [showSDGs, setShowSDGs] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentDistrictSlide, setCurrentDistrictSlide] = useState(0)
+  const [currentSDGSlide, setCurrentSDGSlide] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [isDistrictPlaying, setIsDistrictPlaying] = useState(true)
+  const [isSDGPlaying, setIsSDGPlaying] = useState(true)
 
   const stats = [
     { icon: Globe, number: '5', label: 'Districts Operating', clickable: true },
-    { icon: Users, number: '8', label: 'Staff & Volunteers', clickable: true },
-    { icon: Calendar, number: '2022', label: 'Year Established' },
+    { icon: Users, number: '7', label: 'Staff & Volunteers', clickable: true },
+    { icon: Calendar, number: '2023', label: 'Year Registered' },
     { icon: Target, number: '6', label: 'SDGs Aligned', clickable: true },
   ]
 
@@ -29,28 +33,20 @@ const About = () => {
       gradient: 'from-blue-500 to-indigo-600',
     },
     {
-      title: 'Deputy Director',
-      department: 'Leadership',
-      icon: Users,
-      image: '/CEO.jpg',
-      description: 'Supports the Executive Director and oversees daily operations and program coordination.',
-      gradient: 'from-indigo-500 to-purple-600',
-    },
-    {
-      title: 'HR Manager',
-      department: 'Management',
-      icon: Users,
-      image: '/CEO.jpg',
-      description: 'Manages staff recruitment, development, and ensures organizational capacity building.',
-      gradient: 'from-purple-500 to-pink-600',
-    },
-    {
-      title: 'Program Director',
+      title: 'Programs Director',
       department: 'Management',
       icon: TrendingUp,
       image: '/CEO.jpg',
       description: 'Oversees implementation of all projects and ensures program quality and impact.',
-      gradient: 'from-pink-500 to-rose-600',
+      gradient: 'from-purple-500 to-pink-600',
+    },
+    {
+      title: 'Renewable Energy Specialist',
+      department: 'Technical',
+      icon: Battery,
+      image: '/CEO.jpg',
+      description: 'Leads renewable energy projects and provides technical expertise on clean energy solutions.',
+      gradient: 'from-yellow-500 to-orange-600',
     },
     {
       title: 'Environmental Scientist',
@@ -70,11 +66,11 @@ const About = () => {
       gradient: 'from-lime-500 to-green-600',
     },
     {
-      title: 'Training & Capacity Building Officer',
-      department: 'Programs',
+      title: 'Community Mobilization Officer',
+      department: 'Field Operations',
       icon: Megaphone,
       image: '/CEO.jpg',
-      description: 'Conducts workshops and training sessions to build community capacity and skills.',
+      description: 'Engages with local communities and facilitates grassroots participation in projects.',
       gradient: 'from-cyan-500 to-blue-600',
     },
     {
@@ -88,26 +84,56 @@ const About = () => {
     },
   ]
 
-  // Auto-play slideshow
+  const districts = ['Lilongwe', 'Mchinji', 'Kasungu', 'Dedza', 'Mzimba']
+  const sdgs = [
+    { number: 2, title: 'Zero Hunger', description: 'Strengthening food security and household incomes through sustainable agriculture and climate-resilient techniques.' },
+    { number: 7, title: 'Affordable & Clean Energy', description: 'Promoting clean and affordable energy alternatives to increase adoption of renewable energy technologies in rural Malawi.' },
+    { number: 8, title: 'Decent Work & Economic Growth', description: 'Creating green enterprises offering sustainable livelihoods and facilitating market linkages for farmers.' },
+    { number: 12, title: 'Responsible Consumption & Production', description: 'Encouraging sustainable use of forests, soils, and water resources through community-led conservation.' },
+    { number: 13, title: 'Climate Action', description: 'Reducing carbon emissions and climate vulnerability through reforestation and climate-smart technologies.' },
+    { number: 15, title: 'Life on Land', description: 'Supporting reforestation, restoring degraded lands, and promoting sustainable forest management practices.' },
+  ]
+
+  // Auto-play slideshow for Staff
   useEffect(() => {
     if (!showStaff || !isPlaying) return
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % staffPositions.length)
-    }, 4000) // Change slide every 4 seconds
+    }, 4000)
 
     return () => clearInterval(interval)
   }, [showStaff, isPlaying, staffPositions.length])
 
-  // Reset slide when modal opens and prevent body scroll
+  // Auto-play slideshow for Districts
+  useEffect(() => {
+    if (!showDistricts || !isDistrictPlaying) return
+    
+    const interval = setInterval(() => {
+      setCurrentDistrictSlide((prev) => (prev + 1) % districts.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [showDistricts, isDistrictPlaying, districts.length])
+
+  // Auto-play slideshow for SDGs
+  useEffect(() => {
+    if (!showSDGs || !isSDGPlaying) return
+    
+    const interval = setInterval(() => {
+      setCurrentSDGSlide((prev) => (prev + 1) % sdgs.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [showSDGs, isSDGPlaying, sdgs.length])
+
+  // Reset slide when Staff modal opens and prevent body scroll
   useEffect(() => {
     if (showStaff) {
       setCurrentSlide(0)
       setIsPlaying(true)
-      // Prevent body scroll
       document.body.style.overflow = 'hidden'
     } else {
-      // Restore body scroll
       document.body.style.overflow = 'unset'
     }
     
@@ -116,6 +142,37 @@ const About = () => {
     }
   }, [showStaff])
 
+  // Reset slide when Districts modal opens and prevent body scroll
+  useEffect(() => {
+    if (showDistricts) {
+      setCurrentDistrictSlide(0)
+      setIsDistrictPlaying(true)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [showDistricts])
+
+  // Reset slide when SDGs modal opens and prevent body scroll
+  useEffect(() => {
+    if (showSDGs) {
+      setCurrentSDGSlide(0)
+      setIsSDGPlaying(true)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [showSDGs])
+
+  // Staff navigation
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % staffPositions.length)
   }
@@ -126,6 +183,32 @@ const About = () => {
 
   const goToSlide = (index) => {
     setCurrentSlide(index)
+  }
+
+  // Districts navigation
+  const nextDistrictSlide = () => {
+    setCurrentDistrictSlide((prev) => (prev + 1) % districts.length)
+  }
+
+  const prevDistrictSlide = () => {
+    setCurrentDistrictSlide((prev) => (prev - 1 + districts.length) % districts.length)
+  }
+
+  const goToDistrictSlide = (index) => {
+    setCurrentDistrictSlide(index)
+  }
+
+  // SDGs navigation
+  const nextSDGSlide = () => {
+    setCurrentSDGSlide((prev) => (prev + 1) % sdgs.length)
+  }
+
+  const prevSDGSlide = () => {
+    setCurrentSDGSlide((prev) => (prev - 1 + sdgs.length) % sdgs.length)
+  }
+
+  const goToSDGSlide = (index) => {
+    setCurrentSDGSlide(index)
   }
 
   return (
@@ -145,11 +228,11 @@ const About = () => {
           {/* Text Content */}
           <div className="space-y-7 animate-slide-in-left">
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
-              <strong className="text-primary font-bold">Community Action for Development (CAD)</strong> is a Malawian non-governmental organization established in 2022, dedicated to addressing the interconnected challenges of energy poverty, food insecurity, and environmental degradation.
+              <strong className="text-primary font-bold">Community Action for Development (CAD)</strong> is a Malawian non-governmental organization established in 2022 and registered by the Malawi government in 2023. Stationed in Lilongwe, CAD addresses the intertwined challenges of energy poverty, food insecurity, and environmental degradation that trap communities in cycles of poverty, resource depletion, and vulnerability to climate change.
             </p>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
-              We believe that community-driven, innovative, and sustainable solutions are critical for building resilience and reducing poverty. Guided by integrity, inclusivity, and innovation, we empower communities to secure livelihoods, conserve natural resources, and promote green growth.
+              We believe that community-driven, innovative, and sustainable solutions are critical for building resilience and reducing poverty. Guided by integrity, inclusivity, and innovation, we empower communities to secure livelihoods, conserve natural resources, and promote green growth for present and future generations.
             </p>
 
             <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-l-4 border-primary p-7 rounded-r-xl shadow-lg hover:shadow-xl transition-shadow">
@@ -354,24 +437,74 @@ const About = () => {
                 </Button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 sm:p-8">
-                <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {['Lilongwe', 'Mchinji', 'Kasungu', 'Dedza', 'Dowa'].map((district, index) => (
-                    <Card key={index} className="bg-white border-2 border-gray-200 hover:border-primary transition-all duration-300 hover:shadow-xl">
-                      <CardHeader className="text-center pb-3">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                          <Globe className="h-8 w-8 text-white" />
+              {/* Districts Slideshow */}
+              <div className="flex-1 relative flex items-center justify-center py-4 px-2 overflow-y-auto">
+                {/* Main Slide */}
+                <div className="relative w-full flex items-center justify-center">
+                  <div className="flex transition-transform duration-700 ease-in-out w-full" style={{ transform: `translateX(-${currentDistrictSlide * 100}%)` }}>
+                    {districts.map((district, index) => (
+                      <div key={index} className="w-full flex-shrink-0 px-2 flex items-center justify-center">
+                        <div className="max-w-2xl w-full">
+                          <Card className="bg-white border-2 border-gray-200 shadow-2xl">
+                            <CardHeader className="text-center py-12">
+                              <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                                <Globe className="h-16 w-16 text-white" />
+                              </div>
+                              <CardTitle className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">{district}</CardTitle>
+                              <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-lg mx-auto">
+                                Active projects in renewable energy, reforestation, and climate-smart agriculture.
+                              </p>
+                            </CardHeader>
+                          </Card>
                         </div>
-                        <CardTitle className="text-xl font-bold text-gray-800">{district}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 text-center text-sm">
-                          Active projects in renewable energy, reforestation, and climate-smart agriculture.
-                        </p>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation Buttons */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={prevDistrictSlide}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={nextDistrictSlide}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+
+                {/* Side Indicators */}
+                <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                  {districts.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToDistrictSlide(index)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                        index === currentDistrictSlide 
+                          ? 'bg-primary scale-150' 
+                          : 'bg-gray-400 hover:bg-gray-600'
+                      }`}
+                      aria-label={`Go to district ${index + 1}`}
+                    />
                   ))}
                 </div>
+
+                {/* Play/Pause Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsDistrictPlaying(!isDistrictPlaying)}
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-10 w-10 sm:h-12 sm:w-12 z-20"
+                >
+                  {isDistrictPlaying ? <Pause className="h-4 w-4 sm:h-5 sm:w-5 text-primary" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
+                </Button>
               </div>
             </div>
           </div>
@@ -404,31 +537,74 @@ const About = () => {
                 </Button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 sm:p-8">
-                <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    { number: 1, title: 'No Poverty', description: 'Supporting livelihoods through sustainable agriculture and clean energy access.' },
-                    { number: 2, title: 'Zero Hunger', description: 'Training farmers in climate-smart agriculture to improve food security.' },
-                    { number: 7, title: 'Affordable & Clean Energy', description: 'Installing solar panels in rural communities for reliable electricity.' },
-                    { number: 13, title: 'Climate Action', description: 'Implementing reforestation and environmental conservation programs.' },
-                    { number: 15, title: 'Life on Land', description: 'Restoring degraded lands and promoting sustainable forest management.' },
-                    { number: 17, title: 'Partnerships for the Goals', description: 'Collaborating with local communities and organizations for impact.' },
-                  ].map((sdg, index) => (
-                    <Card key={index} className="bg-white border-2 border-gray-200 hover:border-primary transition-all duration-300 hover:shadow-xl">
-                      <CardHeader className="text-center pb-3">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                          <span className="text-2xl font-extrabold text-white">{sdg.number}</span>
+              {/* SDGs Slideshow */}
+              <div className="flex-1 relative flex items-center justify-center py-4 px-2 overflow-y-auto">
+                {/* Main Slide */}
+                <div className="relative w-full flex items-center justify-center">
+                  <div className="flex transition-transform duration-700 ease-in-out w-full" style={{ transform: `translateX(-${currentSDGSlide * 100}%)` }}>
+                    {sdgs.map((sdg, index) => (
+                      <div key={index} className="w-full flex-shrink-0 px-2 flex items-center justify-center">
+                        <div className="max-w-2xl w-full">
+                          <Card className="bg-white border-2 border-gray-200 shadow-2xl">
+                            <CardHeader className="text-center py-12">
+                              <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                                <span className="text-5xl font-extrabold text-white">{sdg.number}</span>
+                              </div>
+                              <CardTitle className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">{sdg.title}</CardTitle>
+                              <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-lg mx-auto px-4">
+                                {sdg.description}
+                              </p>
+                            </CardHeader>
+                          </Card>
                         </div>
-                        <CardTitle className="text-lg font-bold text-gray-800">{sdg.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 text-center text-sm leading-relaxed">
-                          {sdg.description}
-                        </p>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation Buttons */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={prevSDGSlide}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={nextSDGSlide}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-12 w-12 sm:h-14 sm:w-14 z-20"
+                >
+                  <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                </Button>
+
+                {/* Side Indicators */}
+                <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+                  {sdgs.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSDGSlide(index)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                        index === currentSDGSlide 
+                          ? 'bg-primary scale-150' 
+                          : 'bg-gray-400 hover:bg-gray-600'
+                      }`}
+                      aria-label={`Go to SDG ${index + 1}`}
+                    />
                   ))}
                 </div>
+
+                {/* Play/Pause Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsSDGPlaying(!isSDGPlaying)}
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 hover:bg-white shadow-xl rounded-full h-10 w-10 sm:h-12 sm:w-12 z-20"
+                >
+                  {isSDGPlaying ? <Pause className="h-4 w-4 sm:h-5 sm:w-5 text-primary" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
+                </Button>
               </div>
             </div>
           </div>

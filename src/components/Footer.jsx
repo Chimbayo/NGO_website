@@ -14,9 +14,9 @@ const Footer = () => {
 
   const sdgs = [
     'SDG 2: Zero Hunger',
-    'SDG 7: Clean Energy',
-    'SDG 8: Decent Work',
-    'SDG 12: Responsible Consumption',
+    'SDG 7: Affordable & Clean Energy',
+    'SDG 8: Decent Work & Economic Growth',
+    'SDG 12: Responsible Consumption & Production',
     'SDG 13: Climate Action',
     'SDG 15: Life on Land',
   ]
@@ -118,7 +118,7 @@ const Footer = () => {
               &copy; {currentYear} Community Action for Development (CAD). All rights reserved.
             </p>
             <p className="text-gray-300 text-sm text-center md:text-right font-medium">
-              Registered NGO in Malawi • Making Impact Since 2022
+              Established 2022 • Registered NGO in Malawi 2023
             </p>
           </div>
         </div>
