@@ -1,61 +1,29 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
 
 const Navbar = ({ isScrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const location = useLocation()
 
   const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#values', label: 'Values' },
-    { href: '#focus', label: 'Focus Areas' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#news', label: 'News' },
-    { href: '#about', label: 'About' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/values', label: 'Values' },
+    { href: '/focus-areas', label: 'Focus Areas' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/news', label: 'News' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
   ]
 
-  // Detect active section on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = navLinks.map(link => link.href.substring(1))
-      const scrollPosition = window.scrollY + 100
-
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId)
-        if (section) {
-          const sectionTop = section.offsetTop
-          const sectionBottom = sectionTop + section.offsetHeight
-
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            setActiveSection(sectionId)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Call once on mount
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleNavClick = (e, href) => {
-    e.preventDefault()
+  const handleNavClick = () => {
     setMobileMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      const offset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   return (
@@ -70,7 +38,7 @@ const Navbar = ({ isScrolled }) => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, '#home')}>
+          <Link to="/" className="flex items-center gap-3 group" onClick={handleNavClick}>
             <img
               src="/cad-logo.jpg"
               alt="CAD Malawi Logo"
@@ -82,17 +50,17 @@ const Navbar = ({ isScrolled }) => {
             )}>
               Community Action for Development
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1)
+              const isActive = location.pathname === link.href
               return (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                  <NavLink
+                    to={link.href}
+                    onClick={handleNavClick}
                     className={cn(
                       'font-semibold transition-all duration-300 relative pb-1 text-base',
                       isActive
@@ -111,7 +79,7 @@ const Navbar = ({ isScrolled }) => {
                         isScrolled ? 'bg-primary shadow-primary/50' : 'bg-accent shadow-accent/50'
                       )} />
                     )}
-                  </a>
+                  </NavLink>
                 </li>
               )
             })}
@@ -137,12 +105,12 @@ const Navbar = ({ isScrolled }) => {
           <div className="md:hidden mt-6 pb-6 animate-fade-in">
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => {
-                const isActive = activeSection === link.href.substring(1)
+                const isActive = location.pathname === link.href
                 return (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
+                    <NavLink
+                      to={link.href}
+                      onClick={handleNavClick}
                       className={cn(
                         'block px-5 py-3 rounded-lg font-semibold transition-all duration-300',
                         isActive
@@ -155,7 +123,7 @@ const Navbar = ({ isScrolled }) => {
                       )}
                     >
                       {link.label}
-                    </a>
+                    </NavLink>
                   </li>
                 )
               })}
