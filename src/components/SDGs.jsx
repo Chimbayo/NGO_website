@@ -56,7 +56,7 @@ const SDGs = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-lg sm:text-xl font-extrabold text-primary mb-6 text-balance">
             Our SDG Alignment
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">

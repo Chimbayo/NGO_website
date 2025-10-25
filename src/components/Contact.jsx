@@ -162,7 +162,7 @@ const Contact = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-lg sm:text-xl font-extrabold text-primary mb-6 text-balance">
             Get In Touch
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
@@ -182,8 +182,8 @@ const Contact = () => {
                     className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-primary transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20"
                   >
                     <CardContent className="flex items-start gap-5 p-7">
-                      <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${info.gradient} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-700`}>
-                        <info.icon className="h-8 w-8 text-white" />
+                      <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${info.gradient} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-700`}>
+                        <info.icon className="h-6 w-6 text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">{info.title}</h4>

@@ -38,7 +38,7 @@ const FocusAreas = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-lg sm:text-xl font-extrabold text-primary mb-6 text-balance">
             Our Focus Areas
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
@@ -63,8 +63,8 @@ const FocusAreas = () => {
               {/* Content */}
               <div className="relative z-10">
                 <CardHeader className="text-center">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-primary via-accent to-primary rounded-full mb-6 mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
-                    <area.icon className="h-12 w-12 text-white" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary via-accent to-primary rounded-full mb-6 mx-auto shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+                    <area.icon className="h-7 w-7 text-white" />
                   </div>
                   <CardTitle className="text-lg sm:text-xl md:text-2xl text-white group-hover:text-accent transition-colors duration-300 leading-tight">
                     {area.title}

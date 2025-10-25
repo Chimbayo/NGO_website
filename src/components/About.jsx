@@ -20,7 +20,7 @@ const About = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-lg sm:text-xl font-extrabold text-primary mb-6 text-balance">
             About CAD Malawi
           </h2>
         </div>
@@ -66,8 +66,8 @@ const About = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-700" />
                 <CardContent className="pt-8 pb-8 relative z-10">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-primary via-accent to-primary rounded-full mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
-                    <stat.icon className="h-12 w-12 text-white" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary via-accent to-primary rounded-full mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+                    <stat.icon className="h-7 w-7 text-white" />
                   </div>
                   <div className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3">
                     {stat.number}

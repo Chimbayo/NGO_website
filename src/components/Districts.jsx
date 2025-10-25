@@ -42,7 +42,7 @@ const Districts = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 text-balance">
+          <h2 className="text-lg sm:text-xl font-extrabold text-primary mb-6 text-balance">
             Districts We Operate In
           </h2>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-base sm:text-lg">
@@ -57,8 +57,8 @@ const Districts = () => {
               className="group bg-white backdrop-blur-md border-2 border-gray-200 hover:bg-white hover:border-accent transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-accent/20 overflow-hidden"
             >
               <CardContent className="pt-12 pb-8 text-center">
-                <div className={`w-24 h-24 bg-gradient-to-br ${district.gradient} rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
-                  <MapPin className="h-12 w-12 text-white" />
+                <div className={`w-14 h-14 bg-gradient-to-br ${district.gradient} rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
+                  <MapPin className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-extrabold text-gray-800 mb-4 group-hover:text-accent transition-colors duration-300">
                   {district.name}
