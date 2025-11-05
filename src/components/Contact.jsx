@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
+import { CustomSelect } from './ui/custom-select'
 import emailjs from '@emailjs/browser'
 
 const Contact = () => {
@@ -261,7 +262,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="Mapiri chimbayo"
+                    placeholder="e.g Mapiri chimbayo"
                     className="w-full"
                   />
                 </div>
@@ -277,7 +278,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="mapiri@gmail.com"
+                    placeholder="e.g mapiri@gmail.com"
                     className="w-full"
                   />
                 </div>
@@ -286,22 +287,22 @@ const Contact = () => {
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
-                  <select
-                    id="subject"
+                  <CustomSelect
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="partnership">Partnership Opportunities</option>
-                    <option value="volunteering">Volunteering</option>
-                    <option value="donations">Donations & Support</option>
-                    <option value="projects">Project Information</option>
-                    <option value="media">Media Inquiry</option>
-                    <option value="other">Other</option>
-                  </select>
+                    placeholder="Select a subject"
+                    options={[
+                      { value: '', label: 'Select a subject' },
+                      { value: 'partnership', label: 'Partnership Opportunities' },
+                      { value: 'volunteering', label: 'Volunteering' },
+                      { value: 'donations', label: 'Donations & Support' },
+                      { value: 'projects', label: 'Project Information' },
+                      { value: 'media', label: 'Media Inquiry' },
+                      { value: 'other', label: 'Other' }
+                    ]}
+                  />
                 </div>
 
                 <div>

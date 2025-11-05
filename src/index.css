@@ -128,3 +128,33 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--accent));
 }
+
+/* Custom select dropdown styling */
+select {
+  accent-color: hsl(var(--primary));
+}
+
+select option {
+  background-color: white;
+  color: hsl(var(--foreground));
+  padding: 10px;
+}
+
+select option:checked {
+  background-color: hsl(var(--primary)) !important;
+  background: hsl(var(--primary)) !important;
+  color: white !important;
+}
+
+select option:hover {
+  background-color: hsl(var(--primary) / 0.1) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Firefox specific */
+@-moz-document url-prefix() {
+  select option:checked {
+    background-color: hsl(var(--primary)) !important;
+    color: white !important;
+  }
+}
