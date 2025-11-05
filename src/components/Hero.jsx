@@ -1,8 +1,10 @@
 import { ArrowRight } from 'lucide-react'
 import { Button } from './ui/button'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
+  const navigate = useNavigate()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const images = ['/home.jpeg', '/slide.jpeg', '/slide1.jpg']
 
@@ -14,18 +16,12 @@ const Hero = () => {
     return () => clearInterval(interval)
   }, [])
 
-  const handleLearnMore = (e) => {
-    e.preventDefault()
-    const valuesSection = document.querySelector('#values')
-    if (valuesSection) {
-      const offset = 80
-      const elementPosition = valuesSection.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+  const handleLearnMore = () => {
+    navigate('/values')
+  }
+
+  const handleGetInvolved = () => {
+    navigate('/contact')
   }
 
   return (
@@ -55,23 +51,20 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-[10] container mx-auto px-4 text-center text-white">
-        <div className="max-w-5xl mx-auto space-y-6 animate-fade-in-up">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.15] text-balance">
-            Building Resilient
-            <span className="block bg-gradient-to-r from-accent via-green-400 to-accent bg-clip-text text-transparent mt-3">
-              Communities
-            </span>
+        <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-[1.15] text-balance text-white">
+            Building Resilient Communities
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light">
             Empowering Malawian communities through sustainable energy, agriculture, and environmental conservation
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-5 justify-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center pt-6 pointer-events-auto">
             <Button
               size="default"
               onClick={handleLearnMore}
-              className="group bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-500 hover:scale-105 border-2 border-white/30"
+              className="group cursor-pointer bg-gradient-to-r from-primary via-accent to-primary bg-size-200 hover:bg-pos-100 text-white font-bold text-sm sm:text-base px-4 sm:px-5 py-3 sm:py-4 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-500 hover:scale-105 border-2 border-white/30"
             >
               Learn More
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -79,23 +72,13 @@ const Hero = () => {
             <Button
               size="default"
               variant="outline"
-              onClick={(e) => {
-                e.preventDefault()
-                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="group bg-white/10 backdrop-blur-md border-2 border-white/60 text-white hover:bg-white hover:text-primary font-bold text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
+              onClick={handleGetInvolved}
+              className="group cursor-pointer bg-white/10 backdrop-blur-md border-2 border-white/60 text-white hover:bg-white hover:text-primary font-bold text-sm sm:text-base px-4 sm:px-5 py-3 sm:py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105"
             >
               Get Involved
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-        </div>
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-[10]">
-        <div className="w-7 h-11 border-2 border-white/60 rounded-full flex items-start justify-center p-2 backdrop-blur-sm bg-white/5">
-          <div className="w-1.5 h-3 bg-white/70 rounded-full animate-pulse" />
         </div>
       </div>
     </section>
